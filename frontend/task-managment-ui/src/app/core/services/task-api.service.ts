@@ -8,11 +8,14 @@ import { TaskItem } from '../models/task.model';
 })
 export class TaskApiService {
 
-  private readonly apiUrl = 'https://localhost:5164/api/tasks';
+  private readonly apiUrl = 'http://localhost:5164/api/tasks';
 
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<TaskItem[]> {
     return this.http.get<TaskItem[]>(this.apiUrl);
   }
+  createTask(request: { title: string; assignedTo?: string }) {
+  return this.http.post<TaskItem>(this.apiUrl, request);
+}
 }
