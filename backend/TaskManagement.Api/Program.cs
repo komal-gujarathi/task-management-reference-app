@@ -1,4 +1,5 @@
 using TaskManagement.Api.Services;
+using TaskManagement.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,5 +23,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();
