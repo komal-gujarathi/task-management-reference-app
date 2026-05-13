@@ -40,8 +40,26 @@ import { TaskItem } from './core/models/task.model';
         <p>{{ task.description }}</p>
 
         <div class="meta">
-          <span>Status: {{ task.status }}</span>
-          <span>Assigned To: {{ task.assignedTo || 'Unassigned' }}</span>
+          <label>
+            Status:
+            <select [(ngModel)]="task.status">           
+              <option>To Do</option>
+              <option>In Progress</option>
+              <option>Done</option>
+            </select>
+          </label>
+
+          <button (click)="updateStatus(task.id, task.status)">
+            Update
+          </button>
+
+          <span>
+            Assigned To: {{ task.assignedTo || 'Unassigned' }}
+          </span>
+
+          <button class="delete-btn" (click)="deleteTask(task.id)">
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -92,6 +110,13 @@ import { TaskItem } from './core/models/task.model';
     .error {
       color: #b00020;
     }
+      .delete-btn {
+        margin-left: auto;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+  }
   `]
 })
 export class App implements OnInit {
@@ -138,4 +163,29 @@ export class App implements OnInit {
       }
     });
   }
+ 
+  updateStatus(taskId: string, status: string): void {
+  this.taskApiService.updateTaskStatus(taskId, status)
+    .subscribe({
+      next: () => {
+        this.loadTasks();
+      },
+      error: () => {
+        this.errorMessage = 'Unable to update task.';
+      }
+    });
+}
+
+deleteTask(taskId: string): void {
+  this.taskApiService.deleteTask(taskId)
+    .subscribe({
+      next: () => {
+        this.loadTasks();
+      },
+      error: () => {
+        this.errorMessage = 'Unable to delete task.';
+      }
+    });
+}
+
 }

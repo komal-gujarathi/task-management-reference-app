@@ -18,4 +18,15 @@ export class TaskApiService {
   createTask(request: { title: string; assignedTo?: string }) {
   return this.http.post<TaskItem>(this.apiUrl, request);
 }
+ updateTaskStatus(taskId: string, status: string) {
+  return this.http.patch<TaskItem>(
+    `${this.apiUrl}/${taskId}/status`,
+    { status }
+  );
+}
+
+deleteTask(taskId: string) {
+  return this.http.delete(`${this.apiUrl}/${taskId}`);
+}
+
 }
