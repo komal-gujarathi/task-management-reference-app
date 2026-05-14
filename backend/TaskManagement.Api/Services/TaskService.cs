@@ -25,7 +25,7 @@ public class TaskService : ITaskService
             Description = request.Description,
             AssignedTo = request.AssignedTo,
             DueDate = request.DueDate,
-            Status = "To Do"
+            Status = "To Do",
             ClientName = request.ClientName,
             RaisedBy = request.RaisedBy,
             RaisedDate = DateTime.UtcNow,

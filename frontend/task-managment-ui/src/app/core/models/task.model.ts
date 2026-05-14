@@ -2,8 +2,12 @@ export interface TaskItem {
   id: string;
   title: string;
   description?: string;
-  status: string;
+  clientName?: string;
+  raisedBy?: string;
+  raisedDate: string;
   assignedTo?: string;
   dueDate?: string;
-  createdAt: string;
+  priority: string;
+  category: string;
+  status: string;
 }

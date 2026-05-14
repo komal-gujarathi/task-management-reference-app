@@ -15,9 +15,17 @@ export class TaskApiService {
   getTasks(): Observable<TaskItem[]> {
     return this.http.get<TaskItem[]>(this.apiUrl);
   }
-  createTask(request: { title: string; assignedTo?: string }) {
-  return this.http.post<TaskItem>(this.apiUrl, request);
-}
+  createTask(request: {
+    title: string;
+    description?: string;
+    clientName?: string;
+    raisedBy?: string;
+    assignedTo?: string;
+    dueDate?: string;
+    priority: string;
+    category: string;
+  }) { return this.http.post<TaskItem>(this.apiUrl, request);
+  }
  updateTaskStatus(taskId: string, status: string) {
   return this.http.patch<TaskItem>(
     `${this.apiUrl}/${taskId}/status`,
