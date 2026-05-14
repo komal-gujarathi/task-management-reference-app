@@ -18,12 +18,14 @@ The focus areas were:
 
 ## Solution Overview
 
-The application provides a basic one-screen task management workflow where users can:
+The application provides a simple one-screen task management workflow allowing users to:
+- Create and manage tasks
+- Track status and priority
+- Associate tasks to clients and categories
+- Assign ownership and due dates
+- Update and delete tasks
 
-* Create tasks
-* View tasks
-* Update task status
-* Delete tasks
+The UI was intentionally kept lightweight while still demonstrating a practical workflow-oriented user experience for a small operational team.
 
 The frontend is built in Angular and communicates with a .NET Web API backend through REST endpoints.
 
