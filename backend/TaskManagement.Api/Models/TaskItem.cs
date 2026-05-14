@@ -9,4 +9,9 @@ public class TaskItem
     public string? AssignedTo { get; set; }
     public DateTime? DueDate { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public string? ClientName { get; set; }
+    public string? RaisedBy { get; set; }
+    public DateTime RaisedDate { get; set; } = DateTime.UtcNow;
+    public string Priority { get; set; } = "Medium";
+    public string Category { get; set; } = "General";
 }

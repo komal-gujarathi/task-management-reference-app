@@ -26,6 +26,11 @@ public class TaskService : ITaskService
             AssignedTo = request.AssignedTo,
             DueDate = request.DueDate,
             Status = "To Do"
+            ClientName = request.ClientName,
+            RaisedBy = request.RaisedBy,
+            RaisedDate = DateTime.UtcNow,
+            Priority = request.Priority,
+            Category = request.Category,
         };
 
         _tasks.Add(task);
